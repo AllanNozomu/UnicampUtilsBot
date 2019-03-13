@@ -35,21 +35,32 @@ def process_message(message):
 
             data = {}
             data["chat_id"] = message["from"]["id"]
-            data["text"] = "File received"
+            data["text"] = "Recebemos seu arquivo. Estamos processando-o"
             r = requests.post(get_url(SEND_MESSAGE), data=data)
 
             data = {}
             with requests.get(get_url_download(fileData['result']['file_path']), stream=True) as r:
                 with open('/tmp/test.pdf', 'wb') as f:
                     for chunk in r.iter_content(chunk_size=8192): 
-                        if chunk: # filter out keep-alive new chunks
+                        if chunk:
                             f.write(chunk)
                             f.flush()
-            res = pdf_handler()
+
             data = {}
-            data["chat_id"] = message["from"]["id"]
-            data["text"] = "File received {}".format(str(res))
-            r = requests.post(get_url(SEND_MESSAGE), data=data)
+            try:
+                res = pdf_handler()
+
+                data["chat_id"] = message["from"]["id"]
+                data["text"] = "File received {}".format(str(res))
+                r = requests.post(get_url(SEND_MESSAGE), data=data)
+            except Exception as e:
+                print(e)
+                data["chat_id"] = message["from"]["id"]
+                data["text"] = "Falha no recebimento {}".format(str(e))
+                r = requests.post(get_url(SEND_MESSAGE), data=data)
+            finally:
+                os.remove('/tmp/test.pdf')
+
         else:
 	        data = {}
 	        data["chat_id"] = message["from"]["id"]
