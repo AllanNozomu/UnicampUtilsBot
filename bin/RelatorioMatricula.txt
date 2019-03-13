@@ -1,0 +1,76 @@
+                                                   UNIVERSIDADE ESTADUAL DE CAMPINAS
+
+                                                                      Diretoria Acadêmica
+
+                                        Relatório de Matrícula em Disciplinas
+                                                                                                     Nivel/Período
+RA               Nome
+                                                                                                     Graduação/Tecnologia - 1º Período de 2019
+ 163527          Allan Nozomu Fukasawa
+Tipo Aluno                                                                                          Limite de Créditos
+
+Regular                                                                                              33
+
+Curso
+
+42 - Ciência da Computação
+
+
+Disciplina                                     Turma           Créditos              Situação           Curricularidade              Mensagem
+         Programação de Redes
+MC833                                              C                 2                Aceita               Obrigatória
+         de Computadores
+         Projeto em Compiladores
+MC911                                              B                 4                Aceita               Obrigatória
+      Introdução ao
+MC920 Processamento de                             A                 4                Aceita                   Eletiva
+      Imagem Digital
+                                                                                                                                    Turma Lotada
+           Economia para
+CE738                                             G                  4              Não Aceita             Obrigatória              Autorização de Vaga
+           Engenharia
+                                                                                                                                    Negada
+           Projeto em Sistemas de
+MC855                                              A                12                Aceita                   Eletiva
+           Computação
+
+
+     Hora             Segunda                 Terça                      Quarta                      Quinta                      Sexta            Sábado
+    8:00H                                                                                                                     MC911 B
+                         -----                  -----                       -----                      -----                                         -----
+    SALA                                                                                                                       CC03
+    9:00H                                                                                                                     MC911 B
+                         -----                  -----                       -----                      -----                                         -----
+    SALA                                                                                                                       CC03
+   10:00H                                                                                         MC833 C                     MC911 B
+                         -----                  -----                       -----                                                                    -----
+    SALA                                                                                           CC03                        CC03
+   11:00H                                                                                         MC833 C                     MC911 B
+                         -----                  -----                       -----                                                                    -----
+    SALA                                                                                           CC03                        CC03
+   19:00H                                                              MC920 A                                                MC855 A
+                         -----                  -----                                                  -----                                         -----
+    SALA                                                                CB07                                                   CC03
+   20:00H                                                              MC920 A                                                MC855 A
+                         -----                  -----                                                  -----                                         -----
+    SALA                                                                CB07                                                   CC03
+   21:00H             MC920 A                                                                                                 MC855 A
+                                                -----                       -----                      -----                                         -----
+    SALA               CB07                                                                                                    CC03
+   22:00H             MC920 A                                                                                                 MC855 A
+                                                -----                       -----                      -----                                         -----
+    SALA               CB07                                                                                                    CC03
+Observação:
+Não aparecem no quadro acima, as disciplinas que não têm o horário fixo em sala de aula, e as disciplinas que apresentaram erro.
+
+
+
+
+                                                        UNICAMP – Universidade Estadual de Campinas
+                                                                          DAC – Diretoria Acadêmica
+                                                              Diretoria de Registro e Gerenciamento Acadêmico
+                                     Rua Sérgio Buarque de Holanda, 251 - Cidade Universitária – Barão Geraldo – Campinas/SP – 13083-970
+                                                                         www.dac.unicamp.br
+
+Emissão: 07/03/2019                                     Data da atualização: 01/03/2019 03:02:11                                             Pag:. 1 de 1
+
