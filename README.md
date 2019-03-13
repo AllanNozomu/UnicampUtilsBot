@@ -2,20 +2,17 @@
 A Telegram bot that I still do not know what It is going to do but...
 The main idea is to do a serverless bot using AWS Lambda and some persistance using S3 or some database (RDS or DynamoDB). Also try to wrap things that I am discovering now like `pdftotext` things.
 
-# Future features
-
 ## Under development
 
-1. Alert the student which is the next class and where (one hour before) **UNDER DEVELOPMENT**
-    1. Do this automatically, just send the pdf of the Relatorio de Matricula, parse it and save
-    1. Or do this giving the DAC RA and password
+1. Alert the student which is the next class and where (one hour before)
+    1. Do this automatically, just send the pdf of the `Relatorio de Matricula`, parse it and save
+1. This README file
 
 ## Planned features
 
 1. Location finder: show where some room or institure is
 1. Bandex advisor
     1. Show the week menu and also track the best menus (maybe Feijoada)
-1. Maybe some *"how much money do I have feature"* in my RA card 
 
 ## Useful links that I (am) read(ind) to do this
 
@@ -30,5 +27,3 @@ The main idea is to do a serverless bot using AWS Lambda and some persistance us
 
 1. [Serverless](https://serverless.com/)
 1. [Chalice](https://github.com/aws/chalice)
-
-This is a sample README that I will modify later. Just some ideas about a thing that I do not know yet.
