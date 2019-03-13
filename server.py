@@ -1,9 +1,16 @@
 import requests
 import os
+import json
 from flask import Flask, request
 from pdfParser import pdf_handler
 
 app = Flask(__name__)
+
+if os.path.isfile('production.json'):
+    with open('production.json') as f:
+        data = json.load(f)
+        for k in data:
+            os.environ[k] = data[k]
 
 BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
 
@@ -11,13 +18,13 @@ SEND_MESSAGE="sendMessage"
 GET_FILE="getFile"
 
 def get_url(method):
-  return "https://api.telegram.org/bot{}/{}".format(BOT_TOKEN,method)
+    return "https://api.telegram.org/bot{}/{}".format(BOT_TOKEN,method)
 
 def get_url_prepare_download():
-  return "https://api.telegram.org/bot{}/getFile".format(BOT_TOKEN)
+    return "https://api.telegram.org/bot{}/getFile".format(BOT_TOKEN)
 
 def get_url_download(filename):
-  return "https://api.telegram.org/file/bot{}/{}".format(BOT_TOKEN,filename)
+    return "https://api.telegram.org/file/bot{}/{}".format(BOT_TOKEN,filename)
 
 def process_message(message):
     try:
