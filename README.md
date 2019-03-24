@@ -1,4 +1,8 @@
-# UnicampUtilsBot
+# UnicampUtilsBot [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
+
+[![Build Status](https://travis-ci.org/AllanNozomu/UnicampUtilsBot.svg?branch=master)](https://travis-ci.org/AllanNozomu/UnicampUtilsBot)
+[![Coverage Status](https://coveralls.io/repos/github/AllanNozomu/UnicampUtilsBot/badge.svg?branch=master)](https://coveralls.io/github/AllanNozomu/UnicampUtilsBot?branch=master)
+
 A Telegram bot that I still do not know what It is going to do but...
 The main idea is to do a serverless bot using AWS Lambda and some persistance using S3 or some database (RDS or DynamoDB). Also try to wrap things that I am discovering now like `pdftotext` things.
 
