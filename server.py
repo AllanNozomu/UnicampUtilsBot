@@ -1,21 +1,44 @@
 import requests
 import os
 import json
+import boto3
 from flask import Flask, request
 from pdfParser import pdf_handler
 
 app = Flask(__name__)
 
-if os.path.isfile('production.json'):
-    with open('production.json') as f:
+if os.path.isfile('env.json'):
+    with open('env.json') as f:
         data = json.load(f)
         for k in data:
             os.environ[k] = data[k]
 
-BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
+BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", None)
 
 SEND_MESSAGE="sendMessage"
 GET_FILE="getFile"
+
+def save(user, data):
+    dynamodb = boto3.resource('dynamodb')
+    table = dynamodb.Table('unicamp_utils_bot')
+    table.put_item(Item={ 'user_id' : user, 'data' : data})
+
+def get(user):
+    dynamodb = boto3.resource('dynamodb')
+    table = dynamodb.Table('unicamp_utils_bot')
+    r = table.get_item(Key={ 'user_id' : user})
+
+    data = {}
+    data["chat_id"] = user
+    
+    if 'Item' in r:
+        classes = []
+        for c in r['Item']['data']:
+            classes.append(c['code'])
+        data["text"] = 'Voce tem as seguintes aulas cadastradas:\n {}'.format('\n'.join(classes))
+    else:
+        data["text"] = "Voce nao tem nenhuma aula cadastrada ainda. Para cadastrar, basta fazer um upload de seu relatorio de matricula disponivel em https://www1.sistemas.unicamp.br/altmatr/autenticarusuario.do"
+    r = requests.post(get_url(SEND_MESSAGE), data=data)
 
 def get_url(method):
     return "https://api.telegram.org/bot{}/{}".format(BOT_TOKEN,method)
@@ -49,7 +72,7 @@ def process_message(message):
             data = {}
             try:
                 res = pdf_handler()
-
+                save(message["from"]["id"], res)
                 data["chat_id"] = message["from"]["id"]
                 data["text"] = "File received {}".format(str(res))
                 r = requests.post(get_url(SEND_MESSAGE), data=data)
@@ -62,10 +85,13 @@ def process_message(message):
                 os.remove('/tmp/test.pdf')
 
         else:
-	        data = {}
-	        data["chat_id"] = message["from"]["id"]
-	        data["text"] = "I can hear you!"
-	        r = requests.post(get_url(SEND_MESSAGE), data=data)
+            if (message['text'] == '\\lista'):
+                get(message['from']['id'])
+            else:
+                data = {}
+                data["chat_id"] = message["from"]["id"]
+                data["text"] = "\lista para ver suas materias"
+                r = requests.post(get_url(SEND_MESSAGE), data=data)
     except Exception as e:
         data = {}
         data["chat_id"] = message["from"]["id"]
