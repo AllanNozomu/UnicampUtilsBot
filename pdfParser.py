@@ -27,11 +27,19 @@ class Discipline:
     def __str__(self):
         return '%s %s' % (self.code, str(self.day_hour))
         
-    def to_json(self):
+    def to_item(self):
         hours = []
         for (d, room) in self.day_hour:
-            hours.append('{\"day\": \"%s\", \"room\": \"%s\", \"ini\": %d, \"end\": %d}' % (d, room, self.day_hour[d,room][0], self.day_hour[d,room][1]))
-        return '{ \"code\": \"%s\", \"hours\" :  [%s]}' % (self.code, ','.join(hours))
+            hours.append({
+                'day' : d,
+                'room' : room, 
+                'ini' : self.day_hour[d,room][0],
+                'end' : self.day_hour[d,room][1]
+            })
+        return {
+            'code' : self.code,
+            'hours' : hours
+        }
 
 def convert_number(hour):
     return int(hour[:hour.find(':')])
@@ -58,7 +66,10 @@ def pdf_handler():
         text_path = f.name
     
     try:
-        output = subprocess.check_output(['pdftotext', '-layout', '/tmp/test.pdf', text_path], shell=False, env=dict(LD_LIBRARY_PATH=os.path.join(LIB_DIR, 'pdftotext')))
+        if 'SERVERTYPE' in os.environ and os.environ['SERVERTYPE']:
+            output = subprocess.check_output([os.path.join(BIN_DIR, 'pdftotext'), '-layout', '/tmp/test.pdf', text_path], shell=False, env=dict(LD_LIBRARY_PATH=os.path.join(LIB_DIR, 'pdftotext')))
+        else:
+            output = subprocess.check_output(['pdftotext', '-layout', '/tmp/test.pdf', text_path], shell=False, env=dict(LD_LIBRARY_PATH=os.path.join(LIB_DIR, 'pdftotext')))
     except:
         os.remove(text_path)
         raise Exception("Arquivo passado nao eh um pdf")
@@ -105,7 +116,7 @@ def pdf_handler():
                         disciplines[code] = Discipline(code, room, d, h)
                 discipline_order = []
                 
-        retorno = [disciplines[d].to_json() for d in disciplines]
+        retorno = [ disciplines[d].to_item() for d in disciplines]
     except Exception as e:
         print(str(type(e)) + " " + str(e))
         raise Exception('Nao foi possivel coneverter o arquivo')
