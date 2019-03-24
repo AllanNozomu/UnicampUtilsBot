@@ -81,9 +81,9 @@ def pdf_handler():
                     room = table[i][j]
                     (code, d, h) = discipline_order[j-1]
                     if code in disciplines:
-                        disciplines[code].add_day_hour(room, d, h)
+                        disciplines[code].add_day_hour(room, d, convert_number(h))
                     else:
-                        disciplines[code] = Discipline(code, room, d, h)
+                        disciplines[code] = Discipline(code, room, d, convert_number(h))
                 discipline_order = []
                 
         retorno = [ disciplines[d].to_item() for d in disciplines]
