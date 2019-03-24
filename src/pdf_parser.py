@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from tempfile import NamedTemporaryFile
 from src.discipline import Discipline
 

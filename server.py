@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 import json
 import os
 from flask import Flask, request
