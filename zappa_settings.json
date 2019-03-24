@@ -5,7 +5,6 @@
         "project_name": "unicamputilsbot",
         "runtime": "python3.6",
         "s3_bucket": "zappa-ji6f26zaf",
-        "remote_env": "s3://zappa-ji6f26zaf/production.json",
         "aws_region": "us-east-1"
     }
 }

@@ -104,4 +104,4 @@ venv.bak/
 .mypy_cache/
 
 # production settings
-production.json
+env.json
