@@ -10,12 +10,11 @@ The main idea is to do a serverless bot using AWS Lambda and some persistance us
 
 1. Alert the student which is the next class and where (one hour before)
     1. Do this automatically, just send the pdf of the `Relatorio de Matricula`, parse it and save
-1. This README file
 
 ## Planned features
 
 1. Location finder: show where some room or institure is
-1. Bandex advisor
+2. Bandex advisor
     1. Show the week menu and also track the best menus (maybe Feijoada)
 
 ## Useful links that I (am) read(ind) to do this
