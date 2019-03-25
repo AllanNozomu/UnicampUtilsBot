@@ -7,7 +7,7 @@ install:
   - pip install coveralls
 # command to run tests
 script:
-  - coverage run --source=unicamp_utils_bot setup.py test
+  - coverage run --source=src setup.py test
 
 after_success:
   - coveralls

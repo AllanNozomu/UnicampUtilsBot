@@ -3,7 +3,7 @@ import os
 import json
 import sys
 
-with open('env.json') as f:
+with open('settings/env.json') as f:
     data = json.load(f)
     for k in data:
         os.environ[k] = data[k]
