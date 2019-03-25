@@ -40,6 +40,7 @@ MarkupSafe = "==1.1.1"
 PyYAML = ">=3.13"
 Unidecode = "==1.0.23"
 Werkzeug = "==0.14.1"
+coveralls = "*"
 
 [requires]
 python_version = "3.6"

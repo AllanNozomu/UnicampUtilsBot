@@ -1,6 +1,6 @@
 {
     "dev": {
-        "app_function": "server.app",
+        "app_function": "src.server.app",
         "profile_name": "default",
         "project_name": "unicamputilsbot",
         "runtime": "python3.6",
