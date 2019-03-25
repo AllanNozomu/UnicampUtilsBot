@@ -31,4 +31,4 @@ class Discipline:
         }
 
     def __str__(self):
-        return '%s %s' % (self.code, str(self.day_hour))
+        return '%s' % self.code

@@ -36,5 +36,9 @@ class TestDiscipline(unittest.TestCase):
             }] 
         })
 
+    def test_to_string(self):
+        d = Discipline('MC102', 'CC01', 1, 10)
+        self.assertEqual(str(d), 'MC102')
+
 if __name__ == '__main__':
     unittest.main()
