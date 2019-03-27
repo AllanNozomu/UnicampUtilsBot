@@ -3,7 +3,7 @@ import unittest
 from unittest import mock
 import os
 
-from src.bot import get_url, get_url_prepare_download, get_url_download, ALLOWED_METHOS, send_message
+from src.bot import get_url, get_url_prepare_download, get_url_download, ALLOWED_METHODS, send_message
 
 
 class TestBot(unittest.TestCase):
@@ -11,7 +11,7 @@ class TestBot(unittest.TestCase):
     def test_get_url(self):
         BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
         self.assertIsNotNone(BOT_TOKEN)
-        for method in ALLOWED_METHOS:
+        for method in ALLOWED_METHODS:
             self.assertEqual(get_url(method), "https://api.telegram.org/bot{}/{}".format(BOT_TOKEN,method) )
 
     def test_get_url_fail(self):

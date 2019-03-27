@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
-from tempfile import NamedTemporaryFile
-from src.discipline import Discipline
-
 import json
 import os
 import subprocess
 import io
 import re
+
+from tempfile import NamedTemporaryFile
+from src.discipline import Discipline
+from settings import settings
 
 LAMBDA_TASK_ROOT = os.environ.get('LAMBDA_TASK_ROOT', os.path.dirname(os.path.abspath(__file__)))
 BIN_DIR = os.path.join(LAMBDA_TASK_ROOT, 'bin')

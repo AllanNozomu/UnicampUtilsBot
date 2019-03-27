@@ -2,34 +2,31 @@
 import boto3
 import os
 import requests
-from src.pdf_parser import pdf_handler
 
+from settings import settings
 import src.database as database
+from src.pdf_parser import pdf_handler
 
 SEND_MESSAGE = "sendMessage"
 GET_FILE = "getFile"
 
-ALLOWED_METHOS = (
+ALLOWED_METHODS = (
     SEND_MESSAGE,
     GET_FILE,
 )
 
 def get_url(method):
-    if method not in ALLOWED_METHOS:
+    if method not in ALLOWED_METHODS:
         raise Exception('Not valid method')
-
-    BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", None)
-    return "https://api.telegram.org/bot{}/{}".format(BOT_TOKEN, method)
+    return "https://api.telegram.org/bot{}/{}".format(settings.BOT_TOKEN, method)
 
 
 def get_url_prepare_download():
-    BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", None)
-    return "https://api.telegram.org/bot{}/getFile".format(BOT_TOKEN)
+    return "https://api.telegram.org/bot{}/getFile".format(settings.BOT_TOKEN)
 
 
 def get_url_download(filename):
-    BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", None)
-    return "https://api.telegram.org/file/bot{}/{}".format(BOT_TOKEN,filename)
+    return "https://api.telegram.org/file/bot{}/{}".format(settings.BOT_TOKEN,filename)
 
 
 def send_message(chat_id, text):

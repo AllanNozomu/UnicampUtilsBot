@@ -1,14 +1,12 @@
+# -*- coding: utf-8 -*-
 import requests
 import os
 import json
 import sys
 
-with open('settings/env.json') as f:
-    data = json.load(f)
-    for k in data:
-        os.environ[k] = data[k]
+from settings import settings
 
-BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
+BOT_TOKEN = settings.getenv("TELEGRAM_BOT_TOKEN", None)
 
 def get_url(method):
     return "https://api.telegram.org/bot{}/{}".format(BOT_TOKEN,method)
